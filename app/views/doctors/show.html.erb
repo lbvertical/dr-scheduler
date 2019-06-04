@@ -1,2 +1,18 @@
-<h1>Doctors#show</h1>
-<p>Find me in app/views/doctors/show.html.erb</p>
+<h1>Welcome <%= @doctor.name %></h1>
+
+<br>
+<br>
+
+<p>Hi <%= @doctor.name %>, <br><br> Welcome to Seinfeld Family Medical. </p>
+
+<div id="dr-crud">
+  <ul>
+    <li>
+      <%= link_to 'Edit profile', edit_doctor_path(@doctor) %>
+    </li>
+    <li>
+      <%= link_to 'Delete profile', @doctor, method: :delete %>
+    </li>
+  </ul>
+  
+</div>

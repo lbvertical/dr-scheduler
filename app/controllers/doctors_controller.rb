@@ -1,16 +1,41 @@
 class DoctorsController < ApplicationController
-    before_action :set_course, only: [:show]
+    before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   
   def index
-    @doctors = Doctors.all
+    @doctors = Doctor.all
   end
 
   def show
-  
   end
 
   def new
-    @doctor = Doctors.new
+    @doctor = Doctor.new
+  end
+
+  def create
+    @doctor = Doctor.new(doctor_params)
+
+    if @doctor.save
+      redirect_to @doctor
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @doctor.update(doctor_params)
+      redirect_to @doctor
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @doctor.destroy
+    redirect_to doctors_path
   end
 
   private 
@@ -19,6 +44,6 @@ class DoctorsController < ApplicationController
     end
 
     def doctor_params
-      params.require(:doctor).permit(:name)
+      params.require(:doctor).permit(:name, :avatar)
     end
 end

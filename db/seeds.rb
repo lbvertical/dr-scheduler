@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+8.times do
+  Doctor.create(
+  name: "Dr. "+Faker::TvShows::Seinfeld.character+" M.D.",
+  avatar: Faker::Fillmurray.image
+  )
+end
+
+20.times do
+  Patient.create(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  age: Faker::Number.number(2),
+  phone_number: Faker::PhoneNumber.cell_phone
+  )
+end
+
+puts 'seeded like a mofo'

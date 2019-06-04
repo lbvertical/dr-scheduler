@@ -15,3 +15,20 @@
  */
 
 @import "semantic-ui";
+
+ul{
+  list-style-type: none;
+  color: white;
+}
+
+ul#nav {
+  margin: 0;
+  padding: 40px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+ul#nav li {
+  display: inline;
+  padding: 8px;
+}

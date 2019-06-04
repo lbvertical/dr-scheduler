@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit, :destroy]
+  before_action :set_patient, only: [:show, :update, :edit, :update, :destroy]
   
   def index
     @patients = Patient.all
@@ -22,10 +22,15 @@ class PatientsController < ApplicationController
     end
   end
 
-  def update
+  def edit
   end
 
-  def edit
+  def update
+    if @patient.update(patient_params)
+      redirect_to @patient
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -39,7 +44,7 @@ class PatientsController < ApplicationController
     end
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name)
+    params.require(:patient).permit(:first_name, :last_name, :age, :phone_number)
   end
 
 end

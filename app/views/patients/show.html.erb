@@ -1,2 +1,33 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h1>Hi <%= @patient.first_name %>!</h1>
+
+<p>Welcome to Seinfeld Family Medical. Please check to make sure your information below is correct. You can schedule an appointment from here, or update your profile.</p>
+
+ <div id="patient-table">
+  <table style="width:100%">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th> 
+      <th>Age</th>
+      <th>Phone Number</th>
+      <th>Profile</th>
+    </tr>
+    <tr>
+      <td><%= @patient.first_name %></td>
+      <td><%= @patient.last_name %></td> 
+      <td><%= @patient.age %></td>
+      <td><%= @patient.phone_number %></td>
+      <td><%= link_to "Profile Link", patient_path(@patient) %></td>
+    </tr>
+  </table>
+ </div>
+
+<div id="dr-crud">
+  <ul>
+    <li>
+      <%= link_to 'Edit profile', edit_patient_path(@patient) %>
+    </li>
+    <li>
+      <%= link_to 'Delete profile', @patient, method: :delete %>
+    </li>
+  </ul>
+</div>

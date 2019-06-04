@@ -1,2 +1,28 @@
-<h1>Patients#index</h1>
-<p>Find me in app/views/patients/index.html.erb</p>
+<h1>Patients</h1>
+
+<br>
+<%= link_to 'Become a Patient', new_patient_path %>
+<br>
+<br>
+
+ <div id="patient-table">
+  <table style="width:100%">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th> 
+      <th>Age</th>
+      <th>Phone Number</th>
+      <th>Profile</th>
+    </tr>
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td> 
+      <td><%= patient.age %></td>
+      <td><%= patient.phone_number %></td>
+      <td><%= link_to "Profile Link", patient_path(patient) %></td>
+    </tr>
+  <% end %>
+  </table>
+ </div>
+
