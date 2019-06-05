@@ -1,0 +1,14 @@
+<h1>Edit Appointment</h1>
+
+<%= form_with(model: [@appointment], local: true, class: "ui form" ) do |f| %>
+ <div class="field" id="form-style">
+
+
+
+   <%= f.label :appointment_date %>
+   <%= f.text_field :appointment_date, required: true, autofocus: true %>
+  <%= f.label :doctor %>
+  <%= f.select :doctor_id, @doctors.collect { |u| [u.name, u.id] } %>
+   <%= f.submit %>
+ </div>
+<% end %>

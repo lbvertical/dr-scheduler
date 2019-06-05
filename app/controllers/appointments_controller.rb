@@ -22,7 +22,7 @@ def index
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      redirect_to doctor_path(@doctor)
+      redirect_to appointments_path
     else
       render :new
     end  
@@ -30,15 +30,15 @@ def index
 
   def update
     if @appointment.update(appointment_params)
-    redirect_to doctor_path(@doctor)
+    redirect_to appointments_path
     else
       render :edit
     end
   end
 
   def destroy
-    Appointments.find(params[:id]).destroy
-    redirect_to doctor_path(@doctor)
+    Appointment.find(params[:id]).destroy
+    redirect_to appointments_path
   end
 
   private
@@ -48,9 +48,10 @@ def index
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
+    @doctors = Doctor.all
   end
 
   def appointment_params
-    params.require(:appointment).permit(:body, :doctor_id, :patient_id)
+    params.require(:appointment).permit(:id, :body, :doctor_id, :patient_id, :appointment_date)
   end
 end

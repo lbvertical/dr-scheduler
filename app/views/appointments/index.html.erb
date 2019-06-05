@@ -1,17 +1,28 @@
 <h1>Current Appointments</h1>
 
 <%= link_to 'Schedule an Appointment', new_appointment_path %>
+<br>
+<br>
 
-<div id="appointments">
-  <ul>
+<div id="appointments-table">
+    <table style="width:100%">
+    <tr>
+      <th>Appointment Date</th>
+      <th>Doctor Name</th> 
+      <th>Patient Name</th>
+      <th>Edit Appointment</th>
+      <th>Delete Appointment</th>
+    </tr>
   <% @appointments.each do |appointment| %>
-    <li id="appointment-item">
-      <span>"</span>
-      <%= @appointment.body %>
-      <span>"</span>
-      <%= link_to 'Change Appointment', edit_appointment_path(@movie, comment.id) %>
-      <%= link_to 'Cancel Appointment', appointment_path(@appointment), method: :delete %>
-    </li>
-    <% end %>
-  </ul>
+    <tr>
+      <td><%= appointment.appointment_date %></td>
+      <td><%= appointment.doctor.name %></td>
+      <td><%= appointment.patient.first_name %></td>
+      <td><%= appointment.patient.last_name %></td>
+      <td><%= link_to 'Change Appointment', edit_appointment_path(appointment) %></td>
+      <td><%= link_to 'Delete Appointment', appointment_path(appointment), method: :delete %></td>
+    </tr>
+<% end %>
+  </table>
 </div>
+
